@@ -4,9 +4,9 @@ import { useRef, useEffect, useCallback } from "react";
 import { Check, ChevronRight, Users, Send, Settings, BarChart3 } from "lucide-react";
 
 const sizeConfig = {
-  sm: { circle: 7, number: "text-[10px]", label: "text-[11px]", gap: "gap-3", connector: "h-px" },
-  md: { circle: 9, number: "text-xs", label: "text-xs", gap: "gap-5", connector: "h-0.5" },
-  lg: { circle: 10, number: "text-sm", label: "text-sm", gap: "gap-6", connector: "h-0.5" },
+  sm: { circle: 10, number: "text-[10px]", label: "text-[11px]", gap: "gap-5", mult: 2.5, iconGap: "gap-1.5" },
+  md: { circle: 14, number: "text-xs", label: "text-xs", gap: "gap-7", mult: 2.8, iconGap: "gap-2" },
+  lg: { circle: 16, number: "text-sm", label: "text-sm", gap: "gap-9", mult: 3, iconGap: "gap-2.5" },
 };
 
 const stepIcons = {
@@ -50,21 +50,21 @@ export default function Stepper({ steps = [], currentStep = 0, size = "md", clas
                 disabled={isDisabled}
                 data-active={isActive ? true : undefined}
                 onClick={() => handleClick(idx)}
-                className={`flex flex-col items-center gap-1.5 transition-all duration-300 ${
+                className={`flex items-center ${cfg.iconGap} transition-all duration-300 ${
                   canClick ? "cursor-pointer" : isDisabled ? "cursor-not-allowed" : "cursor-default"
                 } ${isDisabled ? "opacity-50" : ""}`}
                 aria-current={isActive ? "step" : undefined}
                 aria-label={`${step.label}${isCompleted ? " (completed)" : ""}${isActive ? " (current)" : ""}`}
               >
                 <div
-                  className={`flex items-center justify-center rounded-full transition-all duration-300 ${
+                  className={`flex items-center justify-center rounded-lg transition-all duration-300 shrink-0 ${
                     isCompleted
                       ? "bg-gradient-to-br from-[#8BA6FF] to-[#3762EE] text-white shadow-[0_2px_6px_rgba(55,98,238,0.3)]"
                       : isActive
                       ? "bg-gradient-to-br from-[#8BA6FF] to-[#3762EE] text-white shadow-[0_2px_6px_rgba(55,98,238,0.3)]"
                       : "bg-[var(--color-border)] text-[var(--color-text-muted)]"
                   }`}
-                  style={{ width: `${cfg.circle * 2.5}px`, height: `${cfg.circle * 2.5}px` }}
+                  style={{ width: `${cfg.circle * cfg.mult}px`, height: `${cfg.circle * cfg.mult}px` }}
                 >
                   {isCompleted ? (
                     <Check size={cfg.circle} strokeWidth={2.5} />
@@ -75,7 +75,7 @@ export default function Stepper({ steps = [], currentStep = 0, size = "md", clas
                   )}
                 </div>
                 <span
-                  className={`text-center leading-tight whitespace-nowrap transition-colors duration-300 ${
+                  className={`leading-tight whitespace-nowrap transition-colors duration-300 ${
                     isDisabled ? "text-[var(--color-text-muted)]" : isActive ? "text-[var(--color-text-primary)] font-semibold" : "text-[var(--color-text-muted)]"
                   } ${cfg.label}`}
                 >
@@ -84,14 +84,12 @@ export default function Stepper({ steps = [], currentStep = 0, size = "md", clas
               </button>
 
               {idx < steps.length - 1 && (
-                <div className="flex items-center">
-                  <div
-                    className={`shrink-0 transition-colors duration-300 rounded-full ${
-                      isCompleted ? "bg-[#3762EE]" : "bg-[var(--color-border)]"
-                    } ${cfg.connector}`}
-                    style={{ width: `${cfg.circle * 3}px` }}
-                  />
-                </div>
+                <ChevronRight
+                  size={14}
+                  className={`shrink-0 transition-colors duration-300 ${
+                    isCompleted ? "text-[#3762EE]" : "text-[var(--color-text-muted)]"
+                  }`}
+                />
               )}
             </div>
           );

@@ -169,3 +169,13 @@ export const campaignTeamMembers = [
   { name: "Sarah Johnson", initials: "SJ", role: "Outreach Specialist" },
   { name: "Mike Chen", initials: "MC", role: "Data Analyst" },
 ];
+
+export const statsSenderProfiles = [
+  { id: "s1", name: "John Doe", email: "john.doe@example.com", salary: "$3,500", status: "Connected" },
+  { id: "s2", name: "Sarah Johnson", email: "sarah.j@example.com", salary: "$4,200", status: "Connected" },
+  { id: "s3", name: "Mike Chen", email: "mike.chen@example.com", salary: "$3,800", status: "Warning" },
+  { id: "s4", name: "Emily Rodriguez", email: "emily.r@example.com", salary: "$4,500", status: "Connected" },
+  { id: "s5", name: "David Kim", email: "david.kim@example.com", salary: "$2,900", status: "Disconnected" },
+  { id: "s6", name: "Lisa Thompson", email: "lisa.t@example.com", salary: "$5,100", status: "Connected" },
+  { id: "s7", name: "James Wilson", email: "james.w@example.com", salary: "$3,200", status: "Warning" },
+];
