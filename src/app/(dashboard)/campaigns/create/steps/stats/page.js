@@ -431,7 +431,7 @@ export default function StatsStep() {
               </h3>
 
               <div className="flex justify-center mt-5 mb-2">
-                <svg width="210" height="125" viewBox="0 0 210 125">
+                <svg width="210" height="130" viewBox="0 0 210 130">
                   <defs>
                     <linearGradient
                       id="replyGrad"
@@ -443,47 +443,68 @@ export default function StatsStep() {
                       <stop offset="-27.06%" stopColor="#8BA6FF" />
                       <stop offset="83.4%" stopColor="#3762EE" />
                     </linearGradient>
+                    <pattern
+                      id="vStripes"
+                      width="5"
+                      height="5"
+                      patternUnits="userSpaceOnUse"
+                    >
+                      <line
+                        x1="2.5" y1="0" x2="2.5" y2="5"
+                        stroke="rgba(255,255,255,0.2)"
+                        strokeWidth="1.5"
+                      />
+                    </pattern>
                   </defs>
+
+                  {/* Track (unfilled) */}
                   <path
-                    d="M 10 112 A 95 95 0 0 1 200 112"
+                    d="M 12 115 A 93 93 0 0 1 198 115"
                     fill="none"
-                    strokeWidth="18"
+                    strokeWidth="16"
                     strokeLinecap="round"
                     style={{ stroke: "var(--color-gauge-track)" }}
                   />
+
+                  {/* Fill (gradient) */}
                   <path
-                    d="M 22 112 A 83 83 0 0 1 188 112"
+                    d="M 12 115 A 93 93 0 0 1 198 115"
                     fill="none"
                     stroke="url(#replyGrad)"
-                    strokeWidth="14"
+                    strokeWidth="16"
                     strokeLinecap="round"
-                    strokeDasharray={`${(campaignStatsData.replyRate / 100) * Math.PI * 83} ${Math.PI * 83}`}
+                    strokeDasharray={`${(campaignStatsData.replyRate / 100) * Math.PI * 93} ${Math.PI * 93}`}
                   />
+
+                  {/* Vertical stripe overlay on fill */}
                   <path
-                    d="M 34 112 A 71 71 0 0 1 176 112"
+                    d="M 12 115 A 93 93 0 0 1 198 115"
                     fill="none"
-                    strokeWidth="1"
-                    strokeDasharray="5 5"
-                    style={{ stroke: "var(--color-gauge-track)" }}
+                    stroke="url(#vStripes)"
+                    strokeWidth="16"
+                    strokeLinecap="round"
+                    strokeDasharray={`${(campaignStatsData.replyRate / 100) * Math.PI * 93} ${Math.PI * 93}`}
                   />
+
+                  {/* Text */}
                   <text
                     x="105"
-                    y="100"
+                    y="95"
                     textAnchor="middle"
                     fontFamily="Montserrat, sans-serif"
                     fontWeight="600"
-                    fontSize="25"
+                    fontSize="26"
                     style={{ fill: "var(--color-navbar-text)" }}
                   >
                     {campaignStatsData.replyRate}%
                   </text>
                   <text
                     x="105"
-                    y="120"
+                    y="115"
                     textAnchor="middle"
                     fontFamily="Montserrat, sans-serif"
                     fontWeight="700"
-                    fontSize="14"
+                    fontSize="13"
                     style={{ fill: "var(--color-text-primary)" }}
                   >
                     Reply Rate
@@ -493,7 +514,16 @@ export default function StatsStep() {
 
               <div className="border-t border-[var(--color-border)] my-4" />
 
-              <div className="space-y-4">
+              <div className="space-y-3">
+                {/* Status & Result headers */}
+                <div className="flex items-center justify-between px-0.5">
+                  <span className="text-xs font-semibold uppercase tracking-wider text-[var(--color-text-muted)]">
+                    Status
+                  </span>
+                  <span className="text-xs font-semibold uppercase tracking-wider text-[var(--color-text-muted)]">
+                    Result
+                  </span>
+                </div>
                 {(() => {
                   const figmaColors = {
                     Positive: "#7255DE",

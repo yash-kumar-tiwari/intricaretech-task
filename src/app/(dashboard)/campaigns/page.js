@@ -26,7 +26,7 @@ function EmptyCampaignState() {
         {/* Decorative dot bottom-left */}
         <div className="absolute -bottom-1 -left-3 w-4 h-4 md:w-6 md:h-6 rounded-full bg-[#3762EE]/10" />
         {/* Decorative ring */}
-        <div className="absolute -inset-3 md:-inset-4 rounded-full border-2 border-dashed border-[#EBE9F1]" />
+        <div className="absolute -inset-3 md:-inset-4 rounded-full border-2 border-dashed border-[var(--color-border)]" />
         {/* Main icon circle */}
         <div className="relative w-20 h-20 md:w-28 md:h-28 rounded-full bg-gradient-to-b from-[#8BA6FF] to-[#3762EE] flex items-center justify-center shadow-lg">
           <Send size={28} className="text-white md:hidden" />
@@ -35,10 +35,10 @@ function EmptyCampaignState() {
       </div>
 
       {/* ── Text ── */}
-      <h2 className="text-lg md:text-xl font-semibold text-[#5E5873] mb-1.5">
+      <h2 className="text-lg md:text-xl font-semibold text-[var(--color-text-primary)] mb-1.5">
         No campaigns yet
       </h2>
-      <p className="text-sm md:text-base text-[#9692A4] max-w-[280px] md:max-w-sm leading-relaxed mb-6 md:mb-8">
+      <p className="text-sm md:text-base text-[var(--color-text-muted)] max-w-[280px] md:max-w-sm leading-relaxed mb-6 md:mb-8">
         Get started by creating your first campaign.
       </p>
 
@@ -85,13 +85,13 @@ function CampaignRowActions({ campaign }) {
 function ReplyRateBar({ value }) {
   return (
     <div className="flex items-center gap-2">
-      <div className="w-12 h-1.5 rounded-full bg-[#EBE9F1] overflow-hidden">
+      <div className="w-12 h-1.5 rounded-full bg-[var(--color-gauge-track)] overflow-hidden">
         <div
           className="h-full rounded-full transition-all"
           style={{ width: `${value}%`, backgroundColor: value >= 40 ? "#28C76F" : value >= 30 ? "#FF9F43" : "#EA5455" }}
         />
       </div>
-      <span className="text-sm text-[#6E6B7B] w-10 text-right">{value}%</span>
+      <span className="text-sm text-[var(--color-text-body)] w-10 text-right">{value}%</span>
     </div>
   );
 }
@@ -139,7 +139,7 @@ export default function CampaignsPage() {
         <>
       {/* ── Header ── */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
-        <h1 className="text-[22px] font-semibold text-[#5E5873]">Campaign</h1>
+        <h1 className="text-[22px] font-semibold text-[var(--color-text-primary)]">Campaign</h1>
         <div className="flex items-center gap-3">
           <Button variant="secondary" icon={Download}>
             <span className="hidden sm:inline">Export List</span>
@@ -174,7 +174,7 @@ export default function CampaignsPage() {
           {hasFilters && (
             <button
               onClick={() => dispatch(setFilter({ channel: "all", status: "all" }))}
-              className="text-xs font-medium text-[#3666EE] hover:text-[#2A52CC] transition-colors"
+              className="text-xs font-medium text-[var(--color-primary)] hover:text-[var(--color-primary-dark)] transition-colors"
             >
               Clear All
             </button>
@@ -187,11 +187,11 @@ export default function CampaignsPage() {
         <div className="overflow-x-auto">
           <table className="w-full border-collapse">
             <thead>
-              <tr className="border-b border-[#EBE9F1]">
+              <tr className="border-b border-[var(--color-border)]">
                 {COLUMNS.map((col) => {
                   if (col.key === "checkbox")
                     return (
-                      <th key={col.key} className="sticky top-0 z-10 px-4 py-3.5 w-10 bg-[#FAFAFA]" style={{ width: col.width }}>
+                      <th key={col.key} className="sticky top-0 z-10 px-4 py-3.5 w-10 bg-[var(--color-surface)]" style={{ width: col.width }}>
                         <Checkbox
                           size="sm"
                           checked={allSelected}
@@ -204,7 +204,7 @@ export default function CampaignsPage() {
                   return (
                     <th
                       key={col.key}
-                      className="sticky top-0 z-10 px-4 py-3.5 text-xs font-semibold uppercase tracking-wider text-[#5E5873] whitespace-nowrap bg-[#FAFAFA]"
+                      className="sticky top-0 z-10 px-4 py-3.5 text-xs font-semibold uppercase tracking-wider text-[var(--color-text-primary)] whitespace-nowrap bg-[var(--color-surface)]"
                       style={{ width: col.width, textAlign: col.align || "left" }}
                     >
                       {col.label}
@@ -234,8 +234,8 @@ export default function CampaignsPage() {
                   return (
                     <tr
                       key={campaign.id}
-                      className={`border-b border-[#EBE9F1] transition-colors hover:bg-[#F8F8F8] ${
-                        isSelected ? "bg-[#F0F4FF]" : ""
+                      className={`border-b border-[var(--color-border)] transition-theme hover:bg-[var(--color-surface-secondary)] ${
+                        isSelected ? "bg-[var(--color-primary-light)]" : ""
                       }`}
                     >
                       {/* Checkbox */}
@@ -258,17 +258,17 @@ export default function CampaignsPage() {
                             <TypeIcon size={14} style={{ color: typeColor }} />
                           </div>
                           <div>
-                            <p className="text-sm font-medium text-[#5E5873] leading-tight">{campaign.name}</p>
-                            <p className="text-[10px] text-[#9692A4] leading-tight mt-0.5">{typeLabels[campaign.campaignType]}</p>
+                            <p className="text-sm font-medium text-[var(--color-text-primary)] leading-tight">{campaign.name}</p>
+                            <p className="text-[10px] text-[var(--color-text-muted)] leading-tight mt-0.5">{typeLabels[campaign.campaignType]}</p>
                           </div>
                         </div>
                       </td>
 
                       {/* CRM */}
-                      <td className="px-4 py-3 text-sm text-[#6E6B7B] whitespace-nowrap">{campaign.crm}</td>
+                      <td className="px-4 py-3 text-sm text-[var(--color-text-body)] whitespace-nowrap">{campaign.crm}</td>
 
                       {/* Invites Sent */}
-                      <td className="px-4 py-3 text-sm text-[#6E6B7B] text-right whitespace-nowrap">{campaign.invitesSent.toLocaleString()}</td>
+                      <td className="px-4 py-3 text-sm text-[var(--color-text-body)] text-right whitespace-nowrap">{campaign.invitesSent.toLocaleString()}</td>
 
                       {/* Reply Rate */}
                       <td className="px-4 py-3">
@@ -276,7 +276,7 @@ export default function CampaignsPage() {
                       </td>
 
                       {/* Email Sent */}
-                      <td className="px-4 py-3 text-sm text-[#6E6B7B] text-right whitespace-nowrap">{campaign.emailSent.toLocaleString()}</td>
+                      <td className="px-4 py-3 text-sm text-[var(--color-text-body)] text-right whitespace-nowrap">{campaign.emailSent.toLocaleString()}</td>
 
                       {/* Sender */}
                       <td className="px-4 py-3">
@@ -295,7 +295,7 @@ export default function CampaignsPage() {
                       </td>
 
                       {/* Daily Limit */}
-                      <td className="px-4 py-3 text-sm text-[#6E6B7B] text-right whitespace-nowrap">{campaign.dailyLimit}</td>
+                      <td className="px-4 py-3 text-sm text-[var(--color-text-body)] text-right whitespace-nowrap">{campaign.dailyLimit}</td>
 
                       {/* Actions */}
                       <td className="px-4 py-3">
@@ -311,12 +311,12 @@ export default function CampaignsPage() {
 
         {/* ── Footer row count ── */}
         {filtered.length > 0 && (
-          <div className="flex items-center justify-between px-4 py-3 border-t border-[#EBE9F1] text-xs text-[#9692A4]">
+          <div className="flex items-center justify-between px-4 py-3 border-t border-[var(--color-border)] text-xs text-[var(--color-text-muted)]">
             <span>{selected.size > 0 ? `${selected.size} of ${filtered.length} selected` : `${filtered.length} campaigns`}</span>
             {selected.size > 0 && (
               <button
                 onClick={() => setSelected(new Set())}
-                className="text-[#3666EE] hover:text-[#2A52CC] transition-colors font-medium"
+                className="text-[var(--color-primary)] hover:text-[var(--color-primary-dark)] transition-colors font-medium"
               >
                 Clear selection
               </button>

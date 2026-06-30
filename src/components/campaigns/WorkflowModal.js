@@ -33,10 +33,10 @@ function WorkflowCard({ type, isSelected, onSelect }) {
     <motion.button
       type="button"
       onClick={() => onSelect(type.id)}
-      className={`relative flex w-full flex-col rounded-xl border-2 p-5 text-left transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3666EE] focus-visible:ring-offset-2 ${
+      className={`relative flex w-full flex-col rounded-xl border-2 p-5 text-left transition-theme focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)] focus-visible:ring-offset-2 ${
         isSelected
-          ? "border-[#3666EE] bg-[#F0F4FF] shadow-[0_0_0_1px_#3666EE] -translate-y-0.5"
-          : "border-[#EBE9F1] bg-white hover:border-[#3666EE]/40 hover:-translate-y-0.5 hover:shadow-md"
+          ? "border-[var(--color-primary)] bg-[var(--color-primary-light)] shadow-[0_0_0_1px_var(--color-primary)] -translate-y-0.5"
+          : "border-[var(--color-border)] bg-[var(--color-surface)] hover:border-[var(--color-primary)]/40 hover:-translate-y-0.5 hover:shadow-md"
       }`}
       whileHover={{ scale: 1.01 }}
       whileTap={{ scale: 0.99 }}
@@ -55,8 +55,8 @@ function WorkflowCard({ type, isSelected, onSelect }) {
         <div
           className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl transition-all duration-300 ${
             isSelected
-              ? "bg-gradient-to-br from-[#8BA6FF] to-[#3762EE] text-white shadow-md"
-              : "bg-[#EAEFFF] text-[#3666EE]"
+              ? "bg-gradient-to-br from-[var(--color-gradient-from)] to-[var(--color-gradient-to)] text-white shadow-md"
+              : "bg-[var(--color-primary-light)] text-[var(--color-primary)]"
           }`}
         >
           <IconComp size={22} />
@@ -64,29 +64,27 @@ function WorkflowCard({ type, isSelected, onSelect }) {
 
         <div className="flex-1 min-w-0">
           <div className="flex items-center justify-between gap-2">
-            <h3 className="text-base font-semibold text-[#5E5873]">{type.label}</h3>
+            <h3 className="text-base font-semibold text-[var(--color-text-primary)]">{type.label}</h3>
             {/* Radio circle */}
             <div
               className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 transition-all duration-300 ${
                 isSelected
-                  ? "border-[#3762EE] bg-gradient-to-br from-[#8BA6FF] to-[#3762EE]"
-                  : "border-[#D8D6DE]"
+                  ? "border-[var(--color-primary)] bg-gradient-to-br from-[var(--color-gradient-from)] to-[var(--color-gradient-to)]"
+                  : "border-[var(--color-border-strong)]"
               }`}
             >
               {isSelected && <Check size={11} className="text-white" />}
             </div>
           </div>
 
-          <p className="mt-1 text-sm text-[#9692A4] leading-relaxed">{type.description}</p>
+          <p className="mt-1 text-sm text-[var(--color-text-muted)] leading-relaxed">{type.description}</p>
 
           {/* Features */}
           <ul className="mt-3 grid grid-cols-1 gap-1.5 sm:grid-cols-2">
             {type.features.map((f) => (
-              <li key={f} className="flex items-center gap-2 text-xs text-[#6E6B7B]">
+              <li key={f} className="flex items-center gap-2 text-xs text-[var(--color-text-body)]">
                 <div
-                  className={`h-1.5 w-1.5 rounded-full shrink-0 ${
-                    isSelected ? "bg-[#3762EE]" : "bg-[#3666EE]"
-                  }`}
+                  className={`h-1.5 w-1.5 rounded-full shrink-0 bg-[var(--color-primary)]`}
                 />
                 {f}
               </li>
@@ -133,7 +131,7 @@ export default function WorkflowModal({ isOpen, onClose, onConfirm }) {
         ))}
       </div>
 
-      <div className="mt-6 flex items-center justify-end gap-3 border-t border-[#EBE9F1] pt-5">
+      <div className="mt-6 flex items-center justify-end gap-3 border-t border-[var(--color-border)] pt-5">
         <Button variant="secondary" onClick={onClose}>
           Cancel
         </Button>
