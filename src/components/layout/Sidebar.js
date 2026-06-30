@@ -3,7 +3,7 @@
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { Megaphone, ChevronLeft, X } from "lucide-react";
+import { Megaphone, PanelRight, X } from "lucide-react";
 import { useSidebar, SIDEBAR_EXPANDED } from "@/contexts/SidebarContext";
 import SidebarProfile from "./SidebarProfile";
 import ThemeToggle from "./ThemeToggle";
@@ -45,7 +45,7 @@ function SidebarContent({ collapsed, onToggleCollapse, onNavClick }) {
 
   return (
     <div className="flex h-full flex-col bg-[var(--color-surface)] transition-theme">
-      {/* Logo */}
+      {/* Logo + Toggle */}
       <div
         className={[
           "flex items-center border-b border-[var(--color-border)] transition-all duration-300",
@@ -59,12 +59,19 @@ function SidebarContent({ collapsed, onToggleCollapse, onNavClick }) {
         </div>
         {!collapsed && (
           <span
-            className="text-base font-semibold text-[var(--color-text-primary)] truncate"
+            className="text-base font-semibold text-[var(--color-text-primary)] truncate flex-1"
             style={{ fontFamily: "var(--font-inter), Inter, sans-serif" }}
           >
             Frontend Task
           </span>
         )}
+        <button
+          onClick={onToggleCollapse}
+          className="flex items-center justify-center h-7 w-7 rounded-lg text-[var(--color-text-muted)] hover:text-[var(--color-primary)] hover:bg-[var(--color-primary-ghost)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]"
+          aria-label={collapsed ? "Expand sidebar" : "Collapse sidebar"}
+        >
+          <PanelRight size={16} />
+        </button>
       </div>
 
       {/* Navigation */}
@@ -97,16 +104,7 @@ function SidebarContent({ collapsed, onToggleCollapse, onNavClick }) {
 
       </div>
 
-      {/* Collapse toggle (desktop only) */}
-      {!collapsed && (
-        <button
-          onClick={onToggleCollapse}
-          className="absolute -right-3 top-1/2 z-10 flex h-6 w-6 items-center justify-center rounded-full border border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-text-muted)] shadow-sm hover:text-[var(--color-primary)] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)]"
-          aria-label="Collapse sidebar"
-        >
-          <ChevronLeft size={14} />
-        </button>
-      )}
+
     </div>
   );
 }
