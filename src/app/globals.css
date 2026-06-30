@@ -30,10 +30,10 @@
   --color-text-body: #6E6B7B;
   --color-text-muted: #9692A4;
 
-  --color-primary-light: #EAEFFF;
+  --color-primary-light: #EDF2FC;
   --color-primary-ghost: rgba(54, 102, 238, 0.08);
 
-  --color-success-light: #E6F9EE;
+  --color-success-light: #E5F8EE;
   --color-warning-light: #FFF4E6;
   --color-danger-light: #FDE8E8;
 
@@ -45,6 +45,10 @@
   --color-icon-muted: #64748B;
   --color-disabled: #B0C4F7;
   --color-btn-secondary-bg: #E8E8E8;
+  --color-badge-bg: #EDF2FC;
+  --color-badge-text: #5269AB;
+  --color-success-text: #549A75;
+  --color-gauge-track: #BCC1D1;
 }
 
 /* ── Dark theme ── */
@@ -77,6 +81,10 @@
   --color-icon-muted: #7C7A8A;
   --color-disabled: #3A4A6A;
   --color-btn-secondary-bg: #3A3A55;
+  --color-badge-bg: #1E2A4A;
+  --color-badge-text: #8BA6FF;
+  --color-success-text: #6ECB98;
+  --color-gauge-track: #4D4D6A;
 }
 
 @utility scrollbar-none {

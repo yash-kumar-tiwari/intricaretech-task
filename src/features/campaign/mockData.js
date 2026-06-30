@@ -132,11 +132,11 @@ export const campaignStatsData = {
     { label: "Negative", value: 8, color: "#EF4444" },
   ],
   overviewMetrics: [
-    { label: "New Leads", value: "1,628", growth: null, up: true, barValue: 100, color: "#8B5CF6" },
-    { label: "Invites Sent", value: "988", growth: "+61%", up: true, barValue: 61, color: "#3B82F6" },
-    { label: "Invites Accepted", value: "507", growth: "+49%", up: true, barValue: 49, color: "#10B981" },
-    { label: "Messages Sent", value: "460", growth: "+91%", up: true, barValue: 91, color: "#22C55E" },
-    { label: "Replies", value: "202", growth: "+44%", up: true, barValue: 44, color: "#6EE7B7" },
+    { label: "New Leads", value: "1,628", growth: null, up: true, barHeight: 132, color: "#6B62E3" },
+    { label: "Invites Sent", value: "988", growth: "+61%", up: true, barHeight: 91, color: "#9EB7CF" },
+    { label: "Invites Accepted", value: "507", growth: "+49%", up: true, barHeight: 71, color: "#D5EFE7" },
+    { label: "Messages Sent", value: "460", growth: "+91%", up: true, barHeight: 114, color: "#E9F9D2" },
+    { label: "Replies", value: "202", growth: "+44%", up: true, barHeight: 55, color: "#DEF5D9" },
   ],
   actionMetrics: [
     { label: "Remaining Leads", value: "110" },
