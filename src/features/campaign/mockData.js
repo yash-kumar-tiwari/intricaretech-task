@@ -96,11 +96,76 @@ export const statsCards = [
 ];
 
 export const defaultCampaignSettings = {
-  name: "",
-  description: "",
-  startDate: "",
-  endDate: "",
-  timezone: "UTC",
-  dailyLimit: "",
-  schedule: "immediate",
+  campaignName: "",
+  sendingWindows: [
+    { days: ["Mon", "Tue", "Wed", "Thu", "Fri"], timeFrom: "11:30", timeTo: "16:00", timezone: "UTC" },
+  ],
+  aiAssist: {
+    autoReply: false,
+    autoHandleLeads: false,
+    followUpCount: 3,
+  },
+  zapierEvents: {
+    responseReceived: false,
+    inviteSent: false,
+    invitationAccepted: false,
+    invitationWithdrawn: false,
+    followupSent: false,
+  },
 };
+
+/* ── Step 4: Stats Dashboard Mock Data ── */
+
+export const campaignStatsData = {
+  campaignName: "Tech Innovators Outreach",
+  campaignType: "linkedin",
+  status: "active",
+  createdAt: "Mar 15, 2026",
+  crm: "Salesforce",
+  totalLeads: 200,
+  processedLeads: 74,
+  progress: 37,
+  replyRate: 80,
+  replyBreakdown: [
+    { label: "Positive", value: 45, color: "#28C76F" },
+    { label: "Neutral", value: 25, color: "#FF9F43" },
+    { label: "Negative", value: 10, color: "#EA5455" },
+  ],
+  overviewMetrics: [
+    { label: "New Leads", value: "12,450", growth: "+12.5%", up: true },
+    { label: "Invites Sent", value: "5,400", growth: "+8.3%", up: true },
+    { label: "Invites Accepted", value: "3,200", growth: "+15.2%", up: true },
+    { label: "Messages Sent", value: "2,800", growth: "+5.7%", up: true },
+    { label: "Replies", value: "1,240", growth: "+22.1%", up: true },
+  ],
+  actionMetrics: [
+    { label: "Remaining Leads", value: "126" },
+    { label: "Follow-up message", value: "843" },
+    { label: "InMails Sent", value: "1,200" },
+    { label: "Emails", value: "580" },
+    { label: "Profile Viewed", value: "3,400" },
+    { label: "Profile Followed", value: "890" },
+    { label: "Skills Endorsed", value: "450" },
+    { label: "Comments Added", value: "210" },
+  ],
+  replyPerformance: [
+    { type: "Follow-up", value: 85, color: "#3666EE" },
+    { type: "InMail", value: 62, color: "#28C76F" },
+    { type: "Email", value: 78, color: "#FF9F43" },
+    { type: "Connection Message", value: 45, color: "#5E5873" },
+  ],
+};
+
+export const activityTimeline = [
+  { time: "2 days ago", icon: "CheckCircle", color: "#28C76F", message: "Campaign launched successfully", actor: "System" },
+  { time: "2 days ago", icon: "Upload", color: "#3666EE", message: "CSV file uploaded with 250 contacts", actor: "John Doe" },
+  { time: "1 day ago", icon: "Users", color: "#FF9F43", message: "Lookalike audience added to campaign", actor: "Sarah Johnson" },
+  { time: "12 hours ago", icon: "AlertTriangle", color: "#EA5455", message: "Daily invite limit reached for John's profile", actor: "System" },
+  { time: "3 hours ago", icon: "MessageSquare", color: "#28C76F", message: "Reply spike detected — 45 replies in 1 hour", actor: "System" },
+];
+
+export const campaignTeamMembers = [
+  { name: "John Doe", initials: "JD", role: "Campaign Manager" },
+  { name: "Sarah Johnson", initials: "SJ", role: "Outreach Specialist" },
+  { name: "Mike Chen", initials: "MC", role: "Data Analyst" },
+];

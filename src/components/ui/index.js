@@ -14,3 +14,4 @@ export { default as ProgressBar } from "./ProgressBar";
 export { default as Toggle } from "./Toggle";
 export { default as EmptyState } from "./EmptyState";
 export { default as Stepper } from "./Stepper";
+export { default as RadialChart } from "./RadialChart";

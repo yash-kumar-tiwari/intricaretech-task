@@ -23,7 +23,7 @@ const initialState = {
   },
 
   /* ── Creation wizard ── */
-  wizardStep: 1,
+  wizardStep: 0,
   campaignType: null,
   audienceSource: null,
   workflowType: null,
@@ -42,6 +42,8 @@ const initialState = {
   /* ── Sender ── */
   senderProfiles,
   selectedSenderProfile: senderProfiles[0],
+  selectedLinkedinProfiles: [],
+  selectedEmailAccounts: [],
 
   /* ── Campaign settings ── */
   campaignSettings: { ...defaultCampaignSettings },
@@ -110,10 +112,10 @@ const campaignSlice = createSlice({
       state.wizardStep += 1;
     },
     prevWizardStep(state) {
-      if (state.wizardStep > 1) state.wizardStep -= 1;
+      if (state.wizardStep > 0) state.wizardStep -= 1;
     },
     resetWizard(state) {
-      state.wizardStep = 1;
+      state.wizardStep = 0;
       state.campaignType = null;
       state.audienceSource = null;
       state.workflowType = null;
@@ -184,6 +186,12 @@ const campaignSlice = createSlice({
     setSelectedSenderProfile(state, action) {
       state.selectedSenderProfile = action.payload;
     },
+    setSelectedLinkedinProfiles(state, action) {
+      state.selectedLinkedinProfiles = action.payload;
+    },
+    setSelectedEmailAccounts(state, action) {
+      state.selectedEmailAccounts = action.payload;
+    },
 
     /* ── Campaign settings ── */
     updateCampaignSettings(state, action) {
@@ -246,6 +254,8 @@ export const {
   clearLookalike,
 
   setSelectedSenderProfile,
+  setSelectedLinkedinProfiles,
+  setSelectedEmailAccounts,
 
   updateCampaignSettings,
   resetCampaignSettings,
