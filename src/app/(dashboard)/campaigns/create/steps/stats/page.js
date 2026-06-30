@@ -443,47 +443,37 @@ export default function StatsStep() {
                       <stop offset="-27.06%" stopColor="#8BA6FF" />
                       <stop offset="83.4%" stopColor="#3762EE" />
                     </linearGradient>
-                    <pattern
-                      id="vStripes"
-                      width="5"
-                      height="5"
-                      patternUnits="userSpaceOnUse"
-                    >
-                      <line
-                        x1="2.5" y1="0" x2="2.5" y2="5"
-                        stroke="rgba(255,255,255,0.2)"
-                        strokeWidth="1.5"
+                    <mask id="fillMask">
+                      <path
+                        d="M 12 115 A 93 93 0 0 1 198 115"
+                        fill="none"
+                        stroke="white"
+                        strokeWidth="16"
+                        strokeLinecap="butt"
+                        strokeDasharray={`${(campaignStatsData.replyRate / 100) * Math.PI * 93} ${Math.PI * 93}`}
                       />
-                    </pattern>
+                    </mask>
                   </defs>
 
-                  {/* Track (unfilled) */}
+                  {/* Track — all stripes in gauge-track color */}
                   <path
                     d="M 12 115 A 93 93 0 0 1 198 115"
                     fill="none"
                     strokeWidth="16"
-                    strokeLinecap="round"
+                    strokeLinecap="butt"
+                    strokeDasharray="3 5"
                     style={{ stroke: "var(--color-gauge-track)" }}
                   />
 
-                  {/* Fill (gradient) */}
+                  {/* Fill — same striped pattern, masked to filled portion */}
                   <path
                     d="M 12 115 A 93 93 0 0 1 198 115"
                     fill="none"
                     stroke="url(#replyGrad)"
                     strokeWidth="16"
-                    strokeLinecap="round"
-                    strokeDasharray={`${(campaignStatsData.replyRate / 100) * Math.PI * 93} ${Math.PI * 93}`}
-                  />
-
-                  {/* Vertical stripe overlay on fill */}
-                  <path
-                    d="M 12 115 A 93 93 0 0 1 198 115"
-                    fill="none"
-                    stroke="url(#vStripes)"
-                    strokeWidth="16"
-                    strokeLinecap="round"
-                    strokeDasharray={`${(campaignStatsData.replyRate / 100) * Math.PI * 93} ${Math.PI * 93}`}
+                    strokeLinecap="butt"
+                    strokeDasharray="3 5"
+                    mask="url(#fillMask)"
                   />
 
                   {/* Text */}
