@@ -1,36 +1,98 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Campaign Management Dashboard
+
+A campaign management dashboard built with Next.js 16 (App Router), featuring campaign creation workflows, analytics, sender profile management, and dark/light mode theming.
+
+---
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- **Node.js** >= 18
+- **npm** (or yarn / pnpm / bun)
+
+### Install
+
+```bash
+npm install
+```
+
+### Run
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+### Build
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm start
+```
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## Project Structure
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+src/
+├── app/
+│   ├── (dashboard)/           # Dashboard layout (sidebar + navbar)
+│   │   ├── campaigns/         # Campaign list page
+│   │   │   ├── create/        # Campaign creation wizard
+│   │   │   │   └── steps/     # Wizard steps (sender, settings, stats)
+│   │   │   └── page.js
+│   │   ├── analytics/         # Analytics page
+│   │   └── layout.js          # Dashboard shell
+│   ├── globals.css            # Tailwind v4 + theme CSS variables
+│   ├── layout.js              # Root layout (ThemeProvider + StoreProvider)
+│   └── page.js                # Landing / redirect
+├── components/
+│   ├── campaigns/             # Campaign-specific components
+│   ├── charts/                # Chart components (StatCard, etc.)
+│   ├── layout/                # Navbar, Sidebar, ThemeToggle
+│   └── ui/                    # Reusable primitives (Button, Card, Table, Modal, etc.)
+├── contexts/                  # SidebarContext, ThemeProvider
+├── features/campaign/         # Redux slice, constants, mockData, selectors
+├── hooks/                     # useMediaQuery, useDebounce, useClickOutside
+├── lib/                       # Redux store, StoreProvider, data helpers
+├── schemas/                   # Zod schemas
+├── store/                     # Store configuration
+└── utils/                     # Formatters, validators
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Key Pages
 
-## Deploy on Vercel
+| Route | Description |
+|-------|-------------|
+| `/campaigns` | Campaign list with filtering, sorting, bulk actions |
+| `/campaigns/create` | Workflow mode selection (Standard / Advanced) |
+| `/campaigns/create/steps/sender` | Sender profile selection (LinkedIn / Email) |
+| `/campaigns/create/steps/settings` | Campaign settings form |
+| `/campaigns/create/steps/stats` | Campaign summary & analytics |
+| `/analytics` | Performance analytics dashboard |
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Key Dependencies
+
+| Package | Purpose |
+|---------|---------|
+| **next** 16 | React framework with App Router, server components |
+| **react** 19 | UI library |
+| **@reduxjs/toolkit** + **react-redux** | Global state management for campaigns, filters, wizard |
+| **tailwindcss** v4 | Utility-first CSS framework with `@theme` tokens |
+| **next-themes** | Dark/light mode via `class` attribute toggle |
+| **framer-motion** | Page transitions, staggered animations, micro-interactions |
+| **lucide-react** | Icon set used across the entire UI |
+| **react-hook-form** + **zod** + **@hookform/resolvers** | Form handling with schema validation |
+| **react-dropzone** | File upload (CSV import) |
+| **recharts** | Charts on analytics & stats pages |
+
+---
+
+## Theming
+
+The project uses **next-themes** with Tailwind CSS variables. Color tokens are defined in `globals.css` under `:root` (light) and `.dark` (dark). Toggle via the sidebar ThemeToggle component.
