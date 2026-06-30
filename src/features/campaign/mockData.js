@@ -117,57 +117,57 @@ export const defaultCampaignSettings = {
 /* ── Step 4: Stats Dashboard Mock Data ── */
 
 export const campaignStatsData = {
-  campaignName: "Tech Innovators Outreach",
+  campaignName: "Tech Founder",
   campaignType: "linkedin",
   status: "active",
-  createdAt: "Mar 15, 2026",
+  createdAt: "8 Jan, 2026",
   crm: "Salesforce",
   totalLeads: 200,
   processedLeads: 74,
-  progress: 37,
+  progress: 75,
   replyRate: 80,
   replyBreakdown: [
-    { label: "Positive", value: 45, color: "#28C76F" },
-    { label: "Neutral", value: 25, color: "#FF9F43" },
-    { label: "Negative", value: 10, color: "#EA5455" },
+    { label: "Positive", value: 12, color: "#8B5CF6" },
+    { label: "Neutral", value: 14, color: "#F59E0B" },
+    { label: "Negative", value: 8, color: "#EF4444" },
   ],
   overviewMetrics: [
-    { label: "New Leads", value: "12,450", growth: "+12.5%", up: true },
-    { label: "Invites Sent", value: "5,400", growth: "+8.3%", up: true },
-    { label: "Invites Accepted", value: "3,200", growth: "+15.2%", up: true },
-    { label: "Messages Sent", value: "2,800", growth: "+5.7%", up: true },
-    { label: "Replies", value: "1,240", growth: "+22.1%", up: true },
+    { label: "New Leads", value: "1,628", growth: null, up: true, barValue: 100, color: "#8B5CF6" },
+    { label: "Invites Sent", value: "988", growth: "+61%", up: true, barValue: 61, color: "#3B82F6" },
+    { label: "Invites Accepted", value: "507", growth: "+49%", up: true, barValue: 49, color: "#10B981" },
+    { label: "Messages Sent", value: "460", growth: "+91%", up: true, barValue: 91, color: "#22C55E" },
+    { label: "Replies", value: "202", growth: "+44%", up: true, barValue: 44, color: "#6EE7B7" },
   ],
   actionMetrics: [
-    { label: "Remaining Leads", value: "126" },
-    { label: "Follow-up message", value: "843" },
-    { label: "InMails Sent", value: "1,200" },
-    { label: "Emails", value: "580" },
-    { label: "Profile Viewed", value: "3,400" },
-    { label: "Profile Followed", value: "890" },
-    { label: "Skills Endorsed", value: "450" },
-    { label: "Comments Added", value: "210" },
+    { label: "Remaining Leads", value: "110" },
+    { label: "Follow-up message", value: "10" },
+    { label: "InMails Sent", value: "20" },
+    { label: "Emails", value: "89" },
+    { label: "Profile Viewed", value: "45" },
+    { label: "Profile Followed", value: "140" },
+    { label: "Skills Endorsed", value: "50" },
+    { label: "Comments Added", value: "54" },
   ],
   replyPerformance: [
-    { type: "Follow-up", value: 85, color: "#3666EE" },
-    { type: "InMail", value: 62, color: "#28C76F" },
-    { type: "Email", value: 78, color: "#FF9F43" },
-    { type: "Connection Message", value: 45, color: "#5E5873" },
+    { type: "Follow-up", value: 80, color: "#3B82F6" },
+    { type: "InMail", value: 32, color: "#10B981" },
+    { type: "Email", value: 11, color: "#EF4444" },
+    { type: "Connection Message", value: 79, color: "#3B82F6" },
   ],
 };
 
 export const activityTimeline = [
-  { time: "2 days ago", icon: "CheckCircle", color: "#28C76F", message: "Campaign launched successfully", actor: "System" },
-  { time: "2 days ago", icon: "Upload", color: "#3666EE", message: "CSV file uploaded with 250 contacts", actor: "John Doe" },
-  { time: "1 day ago", icon: "Users", color: "#FF9F43", message: "Lookalike audience added to campaign", actor: "Sarah Johnson" },
-  { time: "12 hours ago", icon: "AlertTriangle", color: "#EA5455", message: "Daily invite limit reached for John's profile", actor: "System" },
-  { time: "3 hours ago", icon: "MessageSquare", color: "#28C76F", message: "Reply spike detected — 45 replies in 1 hour", actor: "System" },
+  { time: "09:14 AM", icon: "Play", color: "#3B82F6", message: "Campaign started", actor: "Aman S." },
+  { time: "10:30 AM", icon: "MessageCircle", color: "#8B5CF6", message: "Reply received", actor: "Suresh K." },
+  { time: "10:35 AM", icon: "Send", color: "#EF4444", message: "Follow-up message sent", actor: "System" },
+  { time: "10:35 AM", icon: "UserCheck", color: "#F59E0B", message: "Connection accepted", actor: "Suresh K. (Prospect)" },
+  { time: "10:45 AM", icon: "PauseCircle", color: "#3B82F6", message: "Campaign paused", actor: "Aman S." },
 ];
 
 export const campaignTeamMembers = [
-  { name: "John Doe", initials: "JD", role: "Campaign Manager" },
-  { name: "Sarah Johnson", initials: "SJ", role: "Outreach Specialist" },
-  { name: "Mike Chen", initials: "MC", role: "Data Analyst" },
+  { name: "Alice", initials: "AL" },
+  { name: "Bob", initials: "BO" },
+  { name: "Charlie", initials: "CH" },
 ];
 
 export const statsSenderProfiles = [
